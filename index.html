@@ -1,0 +1,598 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJ BROTECH'S - Accesorios Apple-Compatible Premium Colombia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== INTRO ANIMATION ===== -->
+  <div id="intro-screen">
+    <canvas id="intro-canvas"></canvas>
+    <div id="intro-logo">
+      <img src="logo_transparent.png" alt="AJ BROTECH'S" id="intro-logo-img" />
+      <div id="intro-logo-text">AJ BROTECH'S</div>
+      <div id="intro-shockwave"></div>
+    </div>
+  </div>
+  <!-- ===== END INTRO ===== -->
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-track">
+      <span>&#128293; ENVIO GRATIS en compras +$200.000 | Garantia 6 Meses &#128293;</span>
+      <span class="sep">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>&#128230; Entrega 2-5 dias habiles a todo Colombia</span>
+      <span class="sep">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>&#128179; Pago contra entrega disponible</span>
+      <span class="sep">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>&#128293; ENVIO GRATIS en compras +$200.000 | Garantia 6 Meses &#128293;</span>
+      <span class="sep">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>&#128230; Entrega 2-5 dias habiles a todo Colombia</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="logo_transparent.png" alt="AJ BROTECH'S Logo" class="logo-img" />
+        <div class="logo-text-wrap">
+          <span class="logo-text">AJ BROTECH'S</span>
+          <span class="logo-sub">Colombia</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#features">Beneficios</a></li>
+        <li><a href="#testimonios">Resenas</a></li>
+        <li><a href="checkout.html" class="nav-checkout-btn">Checkout</a></li>
+      </ul>
+      <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-particles">
+      <div class="hp"></div><div class="hp"></div><div class="hp"></div>
+      <div class="hp"></div><div class="hp"></div><div class="hp"></div>
+      <div class="hp"></div><div class="hp"></div><div class="hp"></div>
+      <div class="hp"></div><div class="hp"></div><div class="hp"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-logo-big">
+        <img src="logo_transparent.png" alt="AJ BROTECH'S" class="hero-logo-img" />
+      </div>
+      <div class="hero-badge">&#127464;&#127476; Marca Colombiana &middot; Calidad Garantizada</div>
+      <h1 class="hero-title">La Tecnologia<br /><span class="gradient-text">Premium</span><br />al Alcance de Todos</h1>
+      <p class="hero-subtitle">
+        <span class="hero-sub-pill">&#128230; Envios a todo Colombia</span>
+        <span class="hero-sub-pill">&#128179; Pago contra entrega</span>
+        <span class="hero-sub-pill">&#9989; Garantia 6 meses</span>
+      </p>
+      <div class="hero-btns">
+        <a href="#productos" class="btn btn-primary glow-btn">Ver Productos</a>
+        <a href="#features" class="btn btn-outline">Conocer Mas</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">35+</span>
+          <span class="stat-label">Clientes Felices</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">4.9&#9733;</span>
+          <span class="stat-label">Calificacion</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">6 Meses</span>
+          <span class="stat-label">Garantia</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">&#127464;&#127476;</span>
+          <span class="stat-label">Todo Colombia</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Countdown Timer -->
+  <section class="countdown-section">
+    <div class="countdown-inner">
+      <div class="countdown-label">&#128293; OFERTA ESPECIAL &mdash; Termina en:</div>
+      <div class="countdown-timer">
+        <div class="time-block">
+          <span id="hours">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="time-sep">:</div>
+        <div class="time-block">
+          <span id="minutes">00</span>
+          <small>Minutos</small>
+        </div>
+        <div class="time-sep">:</div>
+        <div class="time-block">
+          <span id="seconds">00</span>
+          <small>Segundos</small>
+        </div>
+      </div>
+      <a href="#productos" class="btn btn-primary countdown-btn glow-btn">&#161;Aprovechar Oferta!</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&#191;Por que elegirnos?</span>
+        <h2 class="section-title">Lo Mejor del Mercado</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Garantia 6 Meses</h3>
+          <p>Todos nuestros productos cuentan con garantia de 6 meses. Si falla, lo reemplazamos sin preguntas.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <h3>Envio Rapido</h3>
+          <p>Recibe tu pedido en 2-5 dias habiles directamente en la puerta de tu casa. Envios a todo Colombia.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Calidad Premium</h3>
+          <p>Materiales de primera calidad, mismo rendimiento que los originales de Apple. Notaras la diferencia.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Soporte 24/7</h3>
+          <p>Nuestro equipo en Colombia esta disponible por WhatsApp para resolver cualquier duda o reclamo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products" id="productos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Catalogo Completo</span>
+        <h2 class="section-title">Nuestros Productos</h2>
+        <p class="section-sub">Apple-Compatible &middot; Maxima Calidad &middot; Mejor Precio</p>
+      </div>
+      <div class="product-grid" id="productGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Resenas Verificadas</span>
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Compre los AirPods Pro y la calidad es increible. Mis companeros del trabajo pensaron que eran los originales. El envio llego en 3 dias a Bogota. 100% recomendados!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <strong>Maria Rodriguez</strong>
+              <span>Bogota, Colombia</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"El cargador Lightning carga super rapido, igualito al original de Apple. Y a menos de la mitad del precio. Ya compre 3 para regalar a mi familia en Medellin."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">CL</div>
+            <div>
+              <strong>Carlos Lopez</strong>
+              <span>Medellin, Antioquia</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Excelente servicio. Me llegaron los AirPods Pro 2 a Cali y suenan increible. La cancelacion de ruido funciona perfecto. Pago contra entrega muy facil. Volveria a comprar."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AS</div>
+            <div>
+              <strong>Ana Sanchez</strong>
+              <span>Cali, Valle del Cauca</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo footer-logo">
+            <img src="logo_transparent.png" alt="AJ BROTECH'S Logo" class="logo-img logo-img-sm" />
+            <div class="logo-text-wrap">
+              <span class="logo-text">AJ BROTECH'S</span>
+              <span class="logo-sub">Colombia</span>
+            </div>
+          </a>
+          <p>Accesorios Apple-Compatible de maxima calidad al alcance de todos los colombianos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+            </a>
+            <a href="https://wa.me/573207507468" class="social-link" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.832.742 5.49 2.04 7.797L0 32l8.418-2.01A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 22.06c-.397-.199-2.35-1.16-2.715-1.291-.365-.132-.63-.199-.896.2-.265.397-1.028 1.29-1.261 1.556-.232.265-.464.298-.861.1-.397-.2-1.676-.618-3.192-1.97-1.18-1.052-1.976-2.35-2.208-2.748-.232-.397-.025-.611.175-.808.18-.178.397-.464.596-.696.199-.232.265-.397.397-.662.132-.265.066-.497-.033-.696-.1-.199-.896-2.16-1.228-2.957-.323-.776-.65-.671-.896-.683l-.762-.013c-.265 0-.696.1-1.061.497-.365.397-1.393 1.36-1.393 3.318 0 1.957 1.426 3.848 1.624 4.113.2.265 2.806 4.282 6.8 5.999.95.41 1.692.655 2.27.839.953.303 1.82.26 2.506.158.765-.114 2.35-.96 2.682-1.888.33-.928.33-1.723.232-1.888-.099-.166-.365-.265-.762-.464z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="#productos">Vidrios Protectores</a></li>
+            <li><a href="#productos">Cargadores</a></li>
+            <li><a href="#productos">AirPods Pro</a></li>
+            <li><a href="#productos">AirPods 4ta Gen</a></li>
+            <li><a href="#productos">Ver Todo</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Informacion</h4>
+          <ul>
+            <li><a href="#">Politica de Envio</a></li>
+            <li><a href="#">Garantia</a></li>
+            <li><a href="#">Devoluciones</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="https://wa.me/573207507468">WhatsApp: +57 320 750 7468</a></li>
+            <li><a href="mailto:info@ajbrotech.com.co">info@ajbrotech.com.co</a></li>
+            <li><span>Lun-Sab: 8am - 8pm COT</span></li>
+            <li><span>&#127464;&#127476; Colombia</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AJ BROTECH'S. Todos los derechos reservados.</p>
+        <p class="footer-disclaimer">Este sitio no tiene afiliacion con Apple Inc. Los productos son compatibles y de fabricacion independiente.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- Cart Sidebar -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:8px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Tu Carrito
+      </h2>
+      <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">&#10005;</button>
+    </div>
+
+    <!-- Banner envío gratis -->
+    <div class="cart-shipping-banner" id="cartShippingBanner">
+      <div class="csb-text" id="csbText">🚚 Agrega <strong id="csbAmount"></strong> más y el envío es GRATIS</div>
+      <div class="csb-bar-wrap"><div class="csb-bar" id="csbBar"></div></div>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <p>Tu carrito esta vacio</p>
+        <button class="btn btn-primary" id="cartShopBtn">Ver Productos</button>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total-row">
+        <span>Subtotal:</span>
+        <strong id="cartSubtotal">$0 COP</strong>
+      </div>
+      <div class="cart-total-row">
+        <span>Envio:</span>
+        <strong id="cartShipping">Gratis</strong>
+      </div>
+      <div class="cart-total-row cart-grand">
+        <span>Total:</span>
+        <strong id="cartTotal">$0 COP</strong>
+      </div>
+      <a href="checkout.html" class="btn btn-primary glow-btn cart-checkout-btn">Proceder al Pago &#8594;</a>
+      <button class="btn btn-clear" id="clearCartBtn">Vaciar Carrito</button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Exit Intent Popup -->
+  <div class="exit-overlay" id="exitOverlay">
+    <div class="exit-popup">
+      <button class="exit-close" id="exitClose">&#10005;</button>
+      <div class="exit-emoji">🎁</div>
+      <h2 class="exit-title">¡No te vayas todavía!</h2>
+      <p class="exit-sub">Tienes productos en tu carrito.<br>Completa tu compra <strong>ahora</strong> y obtén</p>
+      <div class="exit-discount">5% OFF</div>
+      <p class="exit-timer">⏰ Oferta válida solo por: <strong id="exitCountdown">10:00</strong></p>
+      <button class="btn btn-primary glow-btn exit-btn" id="exitBtn">🛒 ¡Aplicar descuento y comprar!</button>
+      <button class="exit-skip" id="exitSkip">No gracias, prefiero pagar precio completo</button>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/573207507468" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="white">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.832.742 5.49 2.04 7.797L0 32l8.418-2.01A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.29 13.29 0 01-6.79-1.858l-.486-.29-5.003 1.196 1.23-4.867-.318-.5A13.28 13.28 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.94c-.397-.199-2.35-1.16-2.715-1.291-.365-.132-.63-.199-.896.2-.265.397-1.028 1.29-1.261 1.556-.232.265-.464.298-.861.1-.397-.2-1.676-.618-3.192-1.97-1.18-1.052-1.976-2.35-2.208-2.748-.232-.397-.025-.611.175-.808.18-.178.397-.464.596-.696.199-.232.265-.397.397-.662.132-.265.066-.497-.033-.696-.1-.199-.896-2.16-1.228-2.957-.323-.776-.65-.671-.896-.683l-.762-.013c-.265 0-.696.1-1.061.497-.365.397-1.393 1.36-1.393 3.318 0 1.957 1.426 3.848 1.624 4.113.2.265 2.806 4.282 6.8 5.999.95.41 1.692.655 2.27.839.953.303 1.82.26 2.506.158.765-.114 2.35-.96 2.682-1.888.33-.928.33-1.723.232-1.888-.099-.166-.365-.265-.762-.464z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+  <script>
+  /* ===== INTRO ANIMATION ===== */
+  (function() {
+    var canvas  = document.getElementById('intro-canvas');
+    var ctx     = canvas.getContext('2d');
+    var intro   = document.getElementById('intro-screen');
+    var logo    = document.getElementById('intro-logo');
+    var logoTxt = document.getElementById('intro-logo-text');
+    var wave    = document.getElementById('intro-shockwave');
+    var W, H;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    /* --- Lightning bolt --- */
+    function lightning(x1, y1, x2, y2, rough, color, width) {
+      if (rough < 2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = color;
+        ctx.stroke();
+        return;
+      }
+      var mx = (x1 + x2) / 2 + (Math.random() - 0.5) * rough;
+      var my = (y1 + y2) / 2 + (Math.random() - 0.5) * rough;
+      lightning(x1, y1, mx, my, rough / 2, color, width);
+      lightning(mx, my, x2, y2, rough / 2, color, width);
+
+      /* random branches */
+      if (rough > 30 && Math.random() < 0.4) {
+        var bx = mx + (Math.random() - 0.5) * rough * 2;
+        var by = my + rough * (0.5 + Math.random() * 0.5);
+        lightning(mx, my, bx, by, rough / 3, color, width * 0.5);
+      }
+    }
+
+    /* --- Flash overlay --- */
+    function flash(alpha) {
+      ctx.fillStyle = 'rgba(100,180,255,' + alpha + ')';
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    /* --- Sequence --- */
+    var startX = W / 2 + (Math.random() - 0.5) * 80;
+    var centerX = W / 2;
+    var centerY = H / 2;
+
+    var phase = 0;
+    var tick  = 0;
+    var bolts = [];
+
+    /* Pre-build bolt segments for smooth replay */
+    function buildBolt() {
+      bolts = [];
+      for (var i = 0; i < 6; i++) {
+        bolts.push({ dx: (Math.random() - 0.5) * 60 });
+      }
+    }
+    buildBolt();
+
+    function drawBolt(progress) {
+      /* progress 0→1: bolt travels from top to center */
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, W, H);
+
+      var endY = H * 0.08 + (centerY - H * 0.08) * progress;
+
+      /* glow layers */
+      ctx.shadowBlur = 0;
+      lightning(startX, -20, centerX, endY, 120, 'rgba(0,180,255,0.15)', 8);
+      lightning(startX, -20, centerX, endY, 100, 'rgba(0,120,255,0.3)',  4);
+      lightning(startX, -20, centerX, endY, 80,  'rgba(80,200,255,0.6)', 2);
+      lightning(startX, -20, centerX, endY, 60,  'rgba(255,255,255,0.9)',1);
+
+      if (progress > 0.85) {
+        flash((progress - 0.85) / 0.15 * 0.15);
+      }
+    }
+
+    var boltStart = null;
+    var boltDur   = 600; // ms
+    var impactTime = null;
+
+    function animate(ts) {
+      if (phase === 0) {
+        /* Phase 0: bolt falls */
+        if (!boltStart) boltStart = ts;
+        var p = Math.min((ts - boltStart) / boltDur, 1);
+        /* ease in */
+        var ep = p * p;
+        drawBolt(ep);
+
+        if (p >= 1) {
+          phase = 1;
+          impactTime = ts;
+          /* big flash */
+          ctx.fillStyle = 'rgba(150,220,255,0.9)';
+          ctx.fillRect(0, 0, W, H);
+          /* show logo */
+          logo.classList.add('show');
+          logoTxt.classList.add('show');
+          setTimeout(function() { wave.classList.add('show'); }, 100);
+        }
+        requestAnimationFrame(animate);
+
+      } else if (phase === 1) {
+        /* Phase 1: flash fades, logo pulses */
+        var elapsed = ts - impactTime;
+        var fadeAlpha = Math.max(0, 0.9 - elapsed / 300);
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, W, H);
+
+        /* residual electric arcs */
+        if (elapsed < 400) {
+          for (var a = 0; a < 3; a++) {
+            var ax = centerX + (Math.random() - 0.5) * 60;
+            var ay = centerY + (Math.random() - 0.5) * 60;
+            lightning(centerX, centerY, ax, ay, 30,
+              'rgba(0,150,255,' + (0.6 * (1 - elapsed/400)) + ')', 1);
+          }
+        }
+
+        if (fadeAlpha > 0) {
+          ctx.fillStyle = 'rgba(100,200,255,' + fadeAlpha + ')';
+          ctx.fillRect(0, 0, W, H);
+        }
+
+        if (elapsed < 800) {
+          requestAnimationFrame(animate);
+        } else {
+          phase = 2;
+          /* star particles burst */
+          spawnParticles();
+          requestAnimationFrame(animateParticles);
+          /* schedule exit */
+          setTimeout(function() {
+            intro.classList.add('hide');
+            setTimeout(function() {
+              intro.style.display = 'none';
+              document.body.style.overflow = '';
+            }, 700);
+          }, 1200);
+        }
+      }
+    }
+
+    /* --- Particle burst --- */
+    var particles = [];
+    function spawnParticles() {
+      for (var i = 0; i < 60; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 2 + Math.random() * 6;
+        particles.push({
+          x: centerX, y: centerY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          decay: 0.02 + Math.random() * 0.03,
+          size: 1 + Math.random() * 3,
+          color: Math.random() < 0.6 ? '#0066ff' : '#ffffff'
+        });
+      }
+    }
+
+    function animateParticles(ts) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, W, H);
+
+      var alive = false;
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.15;
+        p.life -= p.decay;
+        if (p.life > 0) {
+          alive = true;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.life;
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+      if (alive) requestAnimationFrame(animateParticles);
+      else {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, W, H);
+      }
+    }
+
+    /* prevent scroll during intro */
+    document.body.style.overflow = 'hidden';
+
+    /* small delay then start */
+    setTimeout(function() {
+      requestAnimationFrame(animate);
+    }, 300);
+
+  })();
+  /* ===== END INTRO ===== */
+  </script>
+</body>
+</html>
+
+
+
