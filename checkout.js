@@ -216,6 +216,8 @@ function initFormSubmit() {
               },
               body: JSON.stringify({
                 items: cart,
+                shipping: shipping + codFee,
+                discount: discAmt,
                 payer: {
                   nombre:   document.getElementById('firstName').value.trim(),
                   apellido: document.getElementById('lastName').value.trim(),
