@@ -55,7 +55,7 @@ function renderProducts() {
   for (var i = 0; i < PRODUCTS.length; i++) {
     var p = PRODUCTS[i];
     var imgs = p.images || [];
-    html += '<div class="product-card reveal">';
+    html += '<div class="product-card reveal" id="product-' + p.id + '" data-product-id="' + p.id + '">';
     if (p.badge) html += '<div class="product-badge">' + p.badge + '</div>';
 
     /* --- Image Carousel --- */
@@ -202,6 +202,13 @@ function addToCart(id) {
   updateCartUI();
   showToast(p.nameEs + ' agregado!');
   openCart();
+  trackAdEvent('AddToCart', {
+    content_ids: [p.id],
+    content_name: p.nameEs,
+    content_type: 'product',
+    value: p.price,
+    currency: 'COP'
+  });
 }
 
 function removeFromCart(id) {
@@ -467,6 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadAllImages(function() {
     renderProducts();
     initReveal();
+    scrollToProductFromUrl();
   });
   updateCartUI();
   initCountdown();
@@ -517,7 +525,27 @@ function checkPaymentStatus() {
       };
     }
     
-    // 2. Limpiar carrito localmente
+    // 2. Registrar evento de compra (Purchase) para anuncios
+    try {
+      var cartData = JSON.parse(localStorage.getItem('ajbrotech_cart') || '[]');
+      var discountVal = parseInt(localStorage.getItem('ajbrotech_discount') || '0');
+      var sub = cartData.reduce(function(s, item) { return s + item.price * item.qty; }, 0);
+      var ship = sub >= 200000 ? 0 : 16900;
+      var tot = sub + ship;
+      if (discountVal > 0) {
+        tot = tot - Math.round(tot * discountVal / 100);
+      }
+      trackAdEvent('Purchase', {
+        value: tot,
+        currency: 'COP',
+        content_type: 'product',
+        content_ids: cartData.map(function(item) { return item.id; })
+      });
+    } catch(e) {
+      console.warn('Error tracking purchase:', e);
+    }
+
+    // 3. Limpiar carrito localmente
     clearCart();
     
     // 3. Confirmar pedido en la base de datos (Supabase)
@@ -552,4 +580,68 @@ function checkPaymentStatus() {
     window.history.replaceState({}, document.title, cleanUrl);
   }
 }
+
+/* ===== Slugify Helper for Ad Redirection ===== */
+function slugify(text) {
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+
+/* ===== Ad Scroll to Product redirection ===== */
+function scrollToProductFromUrl() {
+  var params = new URLSearchParams(window.location.search);
+  var pVal = params.get('p');
+  if (!pVal) return;
+  
+  pVal = pVal.toLowerCase().trim();
+  
+  var targetProduct = null;
+  for (var i = 0; i < PRODUCTS.length; i++) {
+    var prod = PRODUCTS[i];
+    if (String(prod.id) === pVal || slugify(prod.nameEs) === pVal) {
+      targetProduct = prod;
+      break;
+    }
+  }
+  
+  if (targetProduct) {
+    // Wait for reveal animations to settle
+    setTimeout(function() {
+      var el = document.getElementById('product-' + targetProduct.id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('highlight-pulse');
+        
+        // Track ViewContent event
+        trackAdEvent('ViewContent', {
+          content_ids: [targetProduct.id],
+          content_name: targetProduct.nameEs,
+          content_type: 'product',
+          value: targetProduct.price,
+          currency: 'COP'
+        });
+        
+        // Remove class after animation (3.5 seconds)
+        setTimeout(function() {
+          el.classList.remove('highlight-pulse');
+        }, 3500);
+      }
+    }, 800);
+  }
+}
+
+/* ===== Event Tracker Helper for Meta Pixel & Google Tags ===== */
+function trackAdEvent(eventName, eventData) {
+  if (typeof fbq === 'function') {
+    fbq('track', eventName, eventData);
+  }
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, eventData);
+  }
+}
+
 

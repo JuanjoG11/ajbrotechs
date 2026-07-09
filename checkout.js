@@ -253,6 +253,14 @@ function initFormSubmit() {
       if (mpUrl) {
         window.location.href = mpUrl;
       } else {
+        if (typeof trackAdEvent === 'function') {
+          trackAdEvent('Purchase', {
+            value: total,
+            currency: 'COP',
+            content_type: 'product',
+            content_ids: cart.map(i => i.id)
+          });
+        }
         const orderNumEl = document.getElementById('orderNum');
         if (orderNumEl) orderNumEl.textContent = numero;
         document.getElementById('successModal')?.classList.add('show');
@@ -287,5 +295,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+  }
+
+  // Track InitiateCheckout event
+  try {
+    const cart = JSON.parse(localStorage.getItem('ajbrotech_cart') || '[]');
+    const totalVal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    if (typeof trackAdEvent === 'function' && cart.length > 0) {
+      trackAdEvent('InitiateCheckout', {
+        content_ids: cart.map(i => i.id),
+        num_items: cart.reduce((s, i) => s + i.qty, 0),
+        value: totalVal,
+        currency: 'COP'
+      });
+    }
+  } catch(e) {
+    console.warn('Error tracking InitiateCheckout:', e);
   }
 });
