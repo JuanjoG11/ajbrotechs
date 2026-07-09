@@ -202,7 +202,38 @@ function initFormSubmit() {
       }));
       await sbInsert('pedido_items', items);
 
-      /* 3. Upsert cliente */
+      /* 3. Crear preferencia Mercado Pago si el método es MP */
+      let mpUrl = null;
+      if (metodo === 'mp') {
+        try {
+          const mpRes = await fetch(
+            'https://bwpvrgiejjatzjmmjrew.supabase.co/functions/v1/quick-api',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${SUPABASE_KEY}`
+              },
+              body: JSON.stringify({
+                items: cart,
+                payer: {
+                  nombre:   document.getElementById('firstName').value.trim(),
+                  apellido: document.getElementById('lastName').value.trim(),
+                  email:    document.getElementById('email').value.trim(),
+                  telefono: document.getElementById('phone').value.trim(),
+                  direccion:document.getElementById('address').value.trim(),
+                  ciudad:   document.getElementById('city').value.trim(),
+                },
+                external_reference: pedido.id,
+              })
+            }
+          );
+          const mpData = await mpRes.json();
+          if (mpData.init_point) mpUrl = mpData.init_point;
+        } catch(e) { console.warn('MP error:', e); }
+      }
+
+      /* 4. Upsert cliente */
       await sbUpsert('clientes', {
         email:          document.getElementById('email').value.trim(),
         nombre:         document.getElementById('firstName').value.trim(),
@@ -212,14 +243,18 @@ function initFormSubmit() {
         total_gastado:  total
       }, 'email');
 
-      /* 4. Limpiar carrito */
+      /* 5. Limpiar carrito */
       localStorage.removeItem('ajbrotech_cart');
       localStorage.removeItem('ajbrotech_discount');
 
-      /* 5. Mostrar modal éxito */
-      const orderNumEl = document.getElementById('orderNum');
-      if (orderNumEl) orderNumEl.textContent = numero;
-      document.getElementById('successModal')?.classList.add('show');
+      /* 6. Redirigir a MP o mostrar modal */
+      if (mpUrl) {
+        window.location.href = mpUrl;
+      } else {
+        const orderNumEl = document.getElementById('orderNum');
+        if (orderNumEl) orderNumEl.textContent = numero;
+        document.getElementById('successModal')?.classList.add('show');
+      }
 
     } catch (err) {
       console.error(err);
