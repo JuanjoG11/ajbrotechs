@@ -595,6 +595,18 @@ function checkPaymentStatus() {
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({ estado: 'confirmado' })
+    }).then(function() {
+      // Trigger Resend confirmation email
+      fetch(SUPABASE_URL + '/functions/v1/enviar-confirmacion-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + SUPABASE_KEY
+        },
+        body: JSON.stringify({ id: extRef })
+      }).catch(function(e) {
+        console.warn('Error al activar el correo de confirmacion:', e);
+      });
     }).catch(function(err) {
       console.warn('Error confirmando pago:', err);
     });

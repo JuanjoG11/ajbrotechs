@@ -186,6 +186,7 @@ function initFormSubmit() {
         departamento: document.getElementById('state').value.trim(),
         codigo_postal:document.getElementById('zip')?.value.trim() || '',
         metodo_pago:  metodo,
+        estado:       metodo === 'cod' ? 'confirmado' : 'pendiente',
         subtotal,
         envio:        shipping + codFee,
         descuento:    discAmt,
@@ -261,6 +262,21 @@ function initFormSubmit() {
             content_ids: cart.map(i => i.id)
           });
         }
+
+        // Trigger Resend confirmation email
+        try {
+          fetch(`${SUPABASE_URL}/functions/v1/enviar-confirmacion-email`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${SUPABASE_KEY}`
+            },
+            body: JSON.stringify({ id: pedido.id })
+          });
+        } catch(e) {
+          console.warn('Error al activar el correo de confirmacion:', e);
+        }
+
         const orderNumEl = document.getElementById('orderNum');
         if (orderNumEl) orderNumEl.textContent = numero;
         document.getElementById('successModal')?.classList.add('show');
