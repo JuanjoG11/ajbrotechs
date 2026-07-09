@@ -91,7 +91,7 @@ function renderProducts() {
     html += '<div class="product-name">' + p.nameEs + '</div>';
     html += '<div class="product-stars">';
     html += '<span style="color:#ffd700">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ';
-    html += '<span>' + p.stars + ' (' + p.reviews + ' resenas)</span>';
+    html += '<span>' + p.stars + ' (' + p.reviews + ' reseñas)</span>';
     html += '</div>';
     html += '<div class="product-price-wrap">';
     html += '<span class="product-price">' + formatCOP(p.price) + '</span>';
