@@ -490,4 +490,66 @@ document.addEventListener('DOMContentLoaded', function() {
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  checkPaymentStatus();
 });
+
+/* ===== Mercado Pago Redirect Handler ===== */
+function checkPaymentStatus() {
+  var params = new URLSearchParams(window.location.search);
+  var status = params.get('status');
+  var extRef = params.get('external_reference');
+  
+  if (status === 'success' && extRef) {
+    // 1. Mostrar modal de éxito
+    var modal = document.getElementById('mpSuccessModal');
+    if (modal) {
+      modal.classList.add('show');
+      
+      var closeBtn = document.getElementById('mpSuccessClose');
+      if (closeBtn) {
+        closeBtn.onclick = function() {
+          modal.classList.remove('show');
+        };
+      }
+      modal.onclick = function(e) {
+        if (e.target === modal) modal.classList.remove('show');
+      };
+    }
+    
+    // 2. Limpiar carrito localmente
+    clearCart();
+    
+    // 3. Confirmar pedido en la base de datos (Supabase)
+    var SUPABASE_URL = 'https://bwpvrgiejjatzjmmjrew.supabase.co';
+    var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3cHZyZ2llamphdHpqbW1qcmV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MTgxMjMsImV4cCI6MjA5OTE5NDEyM30.AA0OhHa9bgs1sDdZxiJpHGeM6jUcQV4w91EHYzNPXFQ';
+    
+    fetch(SUPABASE_URL + '/rest/v1/pedidos?id=eq.' + extRef, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ estado: 'confirmado' })
+    }).catch(function(err) {
+      console.warn('Error confirmando pago:', err);
+    });
+    
+    // 4. Limpiar parámetros de URL para no re-activar la modal
+    var cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+    
+  } else if (status === 'failure') {
+    showToast('❌ El pago fue rechazado o cancelado. Intenta de nuevo.');
+    var cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+    
+  } else if (status === 'pending') {
+    showToast('⏳ Tu pago está en proceso de verificación.');
+    var cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+}
+
