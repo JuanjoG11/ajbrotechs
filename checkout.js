@@ -207,7 +207,7 @@ function initFormSubmit() {
       if (metodo === 'mp') {
         try {
           const mpRes = await fetch(
-            'https://bwpvrgiejjatzjmmjrew.supabase.co/functions/v1/quick-api',
+            'https://bwpvrgiejjatzjmmjrew.supabase.co/functions/v1/crear-preferencia',
             {
               method: 'POST',
               headers: {
