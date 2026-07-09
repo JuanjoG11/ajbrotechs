@@ -5,16 +5,26 @@ function formatCOP(n) {
 }
 
 var PRODUCTS = [
-  { id:1,  nameEs:'Vidrio Blindado',         price:15000,  before:22000,  badge:'OFERTA', stars:'4.8', reviews:20, desc:'Proteccion maxima para la pantalla de tu iPhone, anti-impacto y anti-rayones', folder:'images/vidrio-blindado',      bg:'#0d1140' },
-  { id:2,  nameEs:'Vidrio Antiespía',        price:20000,  before:30000,  badge:null,     stars:'4.7', reviews:15, desc:'Privacidad total, solo tu puedes ver tu pantalla. Compatible con iPhone',       folder:'images/vidrio-antiespía',     bg:'#0d1140' },
-  { id:3,  nameEs:'Cargador Lightning',      price:40000,  before:58000,  badge:'OFERTA', stars:'4.8', reviews:12, desc:'Carga rapida compatible con iPhone y iPad',                                      folder:'images/cargador-lightning',   bg:'#0d1140' },
-  { id:4,  nameEs:'Cargador Tipo C',         price:70000,  before:99000,  badge:null,     stars:'4.9', reviews:8,  desc:'Carga rapida 60W, compatible con MacBook, iPad Pro y iPhone 15+',               folder:'images/cargador-tipo-c',      bg:'#0d1140' },
-  { id:5,  nameEs:'AirPods 1ra Gen Pequeño', price:65000,  before:95000,  badge:'OFERTA', stars:'4.8', reviews:18, desc:'Cancelacion activa de ruido, audio de alta calidad, talla pequeña',              folder:'images/airpods-1gen-pequeño', bg:'#0a1040' },
-  { id:6,  nameEs:'AirPods 1ra Gen Grande',  price:65000,  before:95000,  badge:null,     stars:'4.9', reviews:14, desc:'Version talla grande, mayor duracion de bateria y mejor ajuste',                folder:'images/airpods-1gen-grande',  bg:'#0a1040' },
-  { id:7,  nameEs:'AirPods Pro',             price:85000,  before:120000, badge:null,     stars:'4.9', reviews:22, desc:'Sonido premium, cancelacion de ruido activa, diseno compacto y comodo',         folder:'images/airpods-pro',          bg:'#080830' },
-  { id:8,  nameEs:'AirPods Pro 2',           price:100000, before:145000, badge:'OFERTA', stars:'5.0', reviews:21, desc:'Audio espacial, ANC mejorada, estuche MagSafe',                                  folder:'images/airpods-pro-2',        bg:'#060630' },
-  { id:9,  nameEs:'AirPods Pro 3',           price:150000, before:210000, badge:'NUEVO',  stars:'5.0', reviews:9,  desc:'Lo ultimo en tecnologia de audio inalambrico de Apple',                         folder:'images/airpods-pro-3',        bg:'#05052a' },
-  { id:10, nameEs:'AirPods 4ta Generacion',  price:130000, before:185000, badge:'NUEVO',  stars:'4.9', reviews:7,  desc:'Diseno renovado, sonido inmersivo, conector USB-C',                             folder:'images/airpods-4ta-gen',      bg:'#04041f' }
+  { id:1,  nameEs:'Vidrio Blindado',         price:15000,  before:22000,  badge:'OFERTA', stars:'4.8', reviews:20, desc:'Proteccion maxima para la pantalla de tu iPhone, anti-impacto y anti-rayones', folder:'images/vidrio-blindado',      bg:'#0d1140',
+    descBullets: ['Protección máxima anti-impacto para tu pantalla de iPhone','Dureza 9H — el máximo en vidrios protectores','Anti-rayones y anti-huellas dactilares','Instalación fácil en menos de 2 minutos','Compatible con todas las fundas'] },
+  { id:2,  nameEs:'Vidrio Antiespía',        price:20000,  before:30000,  badge:null,     stars:'4.7', reviews:15, desc:'Privacidad total, solo tu puedes ver tu pantalla. Compatible con iPhone',       folder:'images/vidrio-antiespía',     bg:'#0d1140',
+    descBullets: ['Privacidad total — solo tú puedes ver tu pantalla','Ángulo de visión de 60° protege tu información','Anti-rayones y anti-huellas','Ideal para bancos, WhatsApp y contraseñas','Compatible con Face ID'] },
+  { id:3,  nameEs:'Cargador Lightning',      price:40000,  before:58000,  badge:'OFERTA', stars:'4.8', reviews:12, desc:'Carga rapida compatible con iPhone y iPad',                                      folder:'images/cargador-lightning',   bg:'#0d1140',
+    descBullets: ['Carga rápida compatible con iPhone y iPad','Cable de alta resistencia — no se parte ni se dobla','Certificado MFi compatible','Longitud 1 metro — ideal para cargar en la cama','Garantía 6 meses incluida'] },
+  { id:4,  nameEs:'Cargador Tipo C',         price:70000,  before:99000,  badge:null,     stars:'4.9', reviews:8,  desc:'Carga rapida 60W, compatible con MacBook, iPad Pro y iPhone 15+',               folder:'images/cargador-tipo-c',      bg:'#0d1140',
+    descBullets: ['Carga rápida 60W — carga tu MacBook o iPhone 15 en minutos','Compatible con MacBook Air/Pro, iPad Pro e iPhone 15+','Cable USB-C a USB-C de alta resistencia','Detecta automáticamente la potencia óptima','Garantía 6 meses incluida'] },
+  { id:5,  nameEs:'AirPods 1ra Gen Pequeño', price:65000,  before:95000,  badge:'OFERTA', stars:'4.8', reviews:18, desc:'Cancelacion activa de ruido, audio de alta calidad, talla pequeña',              folder:'images/airpods-1gen-pequeño', bg:'#0a1040',
+    descBullets: ['Cancelación activa de ruido para escuchar solo lo que quieres','Audio de alta calidad — sonido inmersivo','Talla pequeña — perfecto para orejas más chicas','Hasta 6 horas de batería + 24h con el estuche','Control táctil en el AirPod'] },
+  { id:6,  nameEs:'AirPods 1ra Gen Grande',  price:65000,  before:95000,  badge:null,     stars:'4.9', reviews:14, desc:'Version talla grande, mayor duracion de bateria y mejor ajuste',                folder:'images/airpods-1gen-grande',  bg:'#0a1040',
+    descBullets: ['Mayor durabilidad y mejor ajuste para orejas más grandes','Cancelación activa de ruido premium','Audio espacial 3D envolvente','Batería extendida — hasta 7h continuas','Estuche de carga compacto incluido'] },
+  { id:7,  nameEs:'AirPods Pro',             price:85000,  before:120000, badge:null,     stars:'4.9', reviews:22, desc:'Sonido premium, cancelacion de ruido activa, diseno compacto y comodo',         folder:'images/airpods-pro',          bg:'#080830',
+    descBullets: ['Sonido premium con graves profundos y agudos nítidos','Cancelación de ruido activa de alto rendimiento','Diseño compacto y cómodo — no se caen','Modo transparencia para escuchar el entorno','Compatible con iPhone y Android'] },
+  { id:8,  nameEs:'AirPods Pro 2',           price:100000, before:145000, badge:'OFERTA', stars:'5.0', reviews:21, desc:'Audio espacial, ANC mejorada, estuche MagSafe',                                  folder:'images/airpods-pro-2',        bg:'#060630',
+    descBullets: ['Audio espacial personalizado — sonido 360° envolvente','ANC mejorada — bloquea hasta el 98% del ruido externo','Estuche con carga MagSafe y USB-C','Control de volumen táctil en el cable','La mejor relación calidad-precio del mercado'] },
+  { id:9,  nameEs:'AirPods Pro 3',           price:150000, before:210000, badge:'NUEVO',  stars:'5.0', reviews:9,  desc:'Lo ultimo en tecnologia de audio inalambrico de Apple',                         folder:'images/airpods-pro-3',        bg:'#05052a',
+    descBullets: ['Lo último en tecnología de audio inalámbrico','ANC de tercera generación — la más avanzada disponible','Audio espacial adaptativo en tiempo real','Chip H2 de última generación','Batería mejorada — hasta 8h continuas'] },
+  { id:10, nameEs:'AirPods 4ta Generacion',  price:130000, before:185000, badge:'NUEVO',  stars:'4.9', reviews:7,  desc:'Diseno renovado, sonido inmersivo, conector USB-C',                             folder:'images/airpods-4ta-gen',      bg:'#04041f',
+    descBullets: ['Diseño renovado y más ergonómico — el más cómodo de todos','Sonido inmersivo con audio espacial','Conector USB-C para cargar el estuche','Cancelación de ruido activa incluida','Chip H2 con eficiencia mejorada'] }
 ];
 
 var cart = [];
@@ -88,7 +98,7 @@ function renderProducts() {
     /* --- End Carousel --- */
 
     html += '<div class="product-info">';
-    html += '<a href="producto.html?id=' + p.id + '" class="product-name" style="text-decoration:none;color:inherit;cursor:pointer">' + p.nameEs + '</a>';
+    html += '<a href="#" class="product-name open-detail" data-id="' + p.id + '" style="text-decoration:none;color:inherit;cursor:pointer">' + p.nameEs + '</a>';
     html += '<div class="product-stars">';
     html += '<span style="color:#ffd700">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ';
     html += '<span>' + p.stars + ' (' + p.reviews + ' reseñas)</span>';
@@ -99,14 +109,25 @@ function renderProducts() {
     html += '<span class="product-discount">-30%</span>';
     html += '</div>';
     html += '<button class="add-to-cart" data-id="' + p.id + '">Agregar al Carrito</button>';
-    html += '<a href="producto.html?id=' + p.id + '" class="product-detail-link">Ver detalle &rarr;</a>';
+    html += '<a href="#" class="product-detail-link open-detail" data-id="' + p.id + '">Ver detalle &rarr;</a>';
     html += '</div></div>';
   }
   grid.innerHTML = html;
 
+  /* Open Detail Modal */
+  grid.querySelectorAll('.open-detail').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      openProductModal(parseInt(this.dataset.id));
+    });
+  });
+
   /* Add-to-cart */
   grid.querySelectorAll('.add-to-cart').forEach(function(btn) {
-    btn.addEventListener('click', function() { addToCart(parseInt(this.dataset.id)); });
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      addToCart(parseInt(this.dataset.id));
+    });
   });
 
   /* Zoom / lightbox */
@@ -192,13 +213,14 @@ function closeLightbox() {
 }
 
 /* ---- Cart ---- */
-function addToCart(id) {
+function addToCart(id, qty) {
+  qty = qty || 1;
   var p = null;
   for (var i = 0; i < PRODUCTS.length; i++) { if (PRODUCTS[i].id === id) { p = PRODUCTS[i]; break; } }
   if (!p) return;
   var found = false;
-  for (var i = 0; i < cart.length; i++) { if (cart[i].id === id) { cart[i].qty++; found = true; break; } }
-  if (!found) cart.push({ id: p.id, name: p.nameEs, price: p.price, qty: 1 });
+  for (var i = 0; i < cart.length; i++) { if (cart[i].id === id) { cart[i].qty += qty; found = true; break; } }
+  if (!found) cart.push({ id: p.id, name: p.nameEs, price: p.price, qty: qty });
   saveCart();
   updateCartUI();
   showToast(p.nameEs + ' agregado!');
@@ -493,6 +515,17 @@ document.addEventListener('DOMContentLoaded', function() {
   if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
   if (clearBtn)    clearBtn.addEventListener('click', clearCart);
 
+  var prodModalClose = document.getElementById('productModalClose');
+  var prodModal = document.getElementById('productDetailModal');
+  if (prodModalClose) {
+    prodModalClose.addEventListener('click', closeProductModal);
+  }
+  if (prodModal) {
+    prodModal.addEventListener('click', function(e) {
+      if (e.target === prodModal) closeProductModal();
+    });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
       var t = document.querySelector(a.getAttribute('href'));
@@ -610,29 +643,167 @@ function scrollToProductFromUrl() {
   }
   
   if (targetProduct) {
-    // Wait for reveal animations to settle
     setTimeout(function() {
-      var el = document.getElementById('product-' + targetProduct.id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('highlight-pulse');
-        
-        // Track ViewContent event
-        trackAdEvent('ViewContent', {
-          content_ids: [targetProduct.id],
-          content_name: targetProduct.nameEs,
-          content_type: 'product',
-          value: targetProduct.price,
-          currency: 'COP'
-        });
-        
-        // Remove class after animation (3.5 seconds)
-        setTimeout(function() {
-          el.classList.remove('highlight-pulse');
-        }, 3500);
-      }
+      openProductModal(targetProduct.id);
     }, 800);
   }
+}
+
+/* ===== Product Detail Modal Functions ===== */
+function openProductModal(id) {
+  var p = PRODUCTS.find(function(x) { return x.id === id; });
+  if (!p) return;
+
+  var modal = document.getElementById('productDetailModal');
+  var content = document.getElementById('productModalContent');
+  if (!modal || !content) return;
+
+  // Track ViewContent event
+  trackAdEvent('ViewContent', {
+    content_ids: [p.id],
+    content_name: p.nameEs,
+    content_type: 'product',
+    value: p.price,
+    currency: 'COP'
+  });
+
+  // Render modal loader first
+  content.innerHTML = '<div style="display:flex;justify-content:center;padding:50px;"><div class="loader-spinner" style="width:30px;height:30px;border:3px solid rgba(255,255,255,0.1);border-top-color:#0066FF;border-radius:50%;animation:spin 0.8s linear infinite;"></div></div>';
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  // Load images
+  fetch(p.folder + '/index.json')
+    .then(function(r) { return r.json(); })
+    .then(function(files) {
+      p.images = files.map(function(f) { return p.folder + '/' + f; });
+    })
+    .catch(function() {
+      p.images = [];
+    })
+    .finally(function() {
+      renderModalContent(p);
+    });
+}
+
+function closeProductModal() {
+  var modal = document.getElementById('productDetailModal');
+  if (modal) {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+}
+
+function renderModalContent(p) {
+  var content = document.getElementById('productModalContent');
+  if (!content) return;
+
+  var imgs = p.images || [];
+  var mainImgSrc = imgs.length > 0 ? imgs[0] : '';
+  
+  // Gallery HTML
+  var galleryHtml = '<div class="modal-gallery">';
+  if (mainImgSrc) {
+    galleryHtml += '<div class="modal-gallery-main">' +
+      '<img src="' + mainImgSrc + '" alt="' + p.nameEs + '" id="modalMainImg" />' +
+      '</div>';
+  } else {
+    galleryHtml += '<div class="modal-gallery-main" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">' +
+      '<span style="font-size:40px">📷</span><p style="color:var(--muted)">Sin fotos</p></div>';
+  }
+  
+  if (imgs.length > 1) {
+    galleryHtml += '<div class="modal-gallery-thumbs">';
+    imgs.forEach(function(src, i) {
+      galleryHtml += '<div class="modal-gallery-thumb' + (i===0?' active':'') + '" data-src="' + src + '">' +
+        '<img src="' + src + '" alt="' + p.nameEs + ' ' + (i+1) + '" />' +
+        '</div>';
+    });
+    galleryHtml += '</div>';
+  }
+  galleryHtml += '</div>';
+
+  // Description bullets
+  var descHtml = '<ul class="modal-desc-list">';
+  var bullets = p.descBullets || [p.desc];
+  bullets.forEach(function(b) {
+    descHtml += '<li>' + b + '</li>';
+  });
+  descHtml += '</ul>';
+
+  var savings = p.before - p.price;
+  var discPct = Math.round((savings / p.before) * 100);
+
+  // Modal Layout
+  var layoutHtml = 
+    '<div class="product-modal-layout">' +
+      galleryHtml +
+      '<div class="modal-info-wrap">' +
+        '<span class="modal-tag">Accesorios Apple Premium</span>' +
+        '<h2 class="modal-title">' + p.nameEs + '</h2>' +
+        '<div class="modal-stars">★★★★★ <span>' + p.stars + ' (' + p.reviews + ' reseñas)</span></div>' +
+        
+        '<div class="modal-price-box">' +
+          '<span class="modal-price">' + formatCOP(p.price) + 
+            '<span class="modal-price-before">' + formatCOP(p.before) + '</span>' +
+            '<span class="modal-badge">-' + discPct + '% OFF</span>' +
+          '</span>' +
+        '</div>' +
+
+        descHtml +
+
+        '<div class="modal-qty-row">' +
+          '<span class="modal-qty-label">Cantidad:</span>' +
+          '<div class="modal-qty-selector">' +
+            '<button class="modal-qty-btn" id="modalQtyMinus">−</button>' +
+            '<div class="modal-qty-num" id="modalQtyNum">1</div>' +
+            '<button class="modal-qty-btn" id="modalQtyPlus">+</button>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="modal-cta-section">' +
+          '<button class="btn-modal-cart" id="modalAddCart">🛒 Agregar al Carrito</button>' +
+          '<a href="https://wa.me/573207507468?text=Hola! Me interesa el ' + encodeURIComponent(p.nameEs) + ', precio ' + formatCOP(p.price) + '" target="_blank" class="btn-modal-whatsapp">' +
+            '<svg viewBox="0 0 32 32" width="20" height="20" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.832.742 5.49 2.04 7.797L0 32l8.418-2.01A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 22.06c-.397-.199-2.35-1.16-2.715-1.291-.365-.132-.63-.199-.896.2-.265.397-1.028 1.29-1.261 1.556-.232.265-.464.298-.861.1-.397-.2-1.676-.618-3.192-1.97-1.18-1.052-1.976-2.35-2.208-2.748-.232-.397-.025-.611.175-.808.18-.178.397-.464.596-.696.199-.232.265-.397.397-.662.132-.265.066-.497-.033-.696-.1-.199-.896-2.16-1.228-2.957-.323-.776-.65-.671-.896-.683l-.762-.013c-.265 0-.696.1-1.061.497-.365.397-1.393 1.36-1.393 3.318 0 1.957 1.426 3.848 1.624 4.113.2.265 2.806 4.282 6.8 5.999.95.41 1.692.655 2.27.839.953.303 1.82.26 2.506.158.765-.114 2.35-.96 2.682-1.888.33-.928.33-1.723.232-1.888-.099-.166-.365-.265-.762-.464z"/></svg>' +
+            'Preguntar por WhatsApp' +
+          '</a>' +
+        '</div>' +
+
+        '<div class="modal-trust">' +
+          '<div class="modal-trust-item">🛡️ <strong>Garantía:</strong> 6 meses</div>' +
+          '<div class="modal-trust-item">🚚 <strong>Envío gratis:</strong> +$200.000</div>' +
+        '</div>' +
+
+      '</div>' +
+    '</div>';
+
+  content.innerHTML = layoutHtml;
+
+  // Hook elements
+  var qty = 1;
+  var qtyNum = document.getElementById('modalQtyNum');
+  document.getElementById('modalQtyMinus').onclick = function() {
+    if (qty > 1) { qty--; qtyNum.textContent = qty; }
+  };
+  document.getElementById('modalQtyPlus').onclick = function() {
+    if (qty < 10) { qty++; qtyNum.textContent = qty; }
+  };
+
+  document.getElementById('modalAddCart').onclick = function() {
+    addToCart(p.id, qty);
+    closeProductModal();
+  };
+
+  // Thumbnail click
+  var thumbs = content.querySelectorAll('.modal-gallery-thumb');
+  thumbs.forEach(function(th) {
+    th.onclick = function() {
+      thumbs.forEach(function(t) { t.classList.remove('active'); });
+      this.classList.add('active');
+      var main = document.getElementById('modalMainImg');
+      if (main) main.src = this.dataset.src;
+    };
+  });
 }
 
 /* ===== Event Tracker Helper for Meta Pixel & Google Tags ===== */
