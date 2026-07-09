@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía Meta Ads – AJBrotechs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      --blue: #1877F2;
+      --dark: #0a0a0f;
+      --card: #12121a;
+      --border: #1e1e2e;
+      --accent: #00d4ff;
+      --green: #00e676;
+      --yellow: #FFD600;
+      --red: #FF3D71;
+      --text: #e0e0ef;
+      --muted: #8888aa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ===== COVER ===== */
+    .cover {
+      background: linear-gradient(135deg, #0a0a1f 0%, #0d1b4b 50%, #0a0a1f 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(24,119,242,0.25) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
+
+    .cover-badge {
+      background: rgba(24,119,242,0.2);
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .cover h1 {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .cover h1 span {
+      background: linear-gradient(90deg, #1877F2, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      position: relative;
+    }
+
+    .cover-meta-item {
+      text-align: center;
+    }
+
+    .cover-meta-item .num {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .cover-meta-item .label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== LAYOUT ===== */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #1877F2, #00d4ff);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .section-header .sub {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 .icon {
+      font-size: 22px;
+    }
+
+    /* ===== STEPS ===== */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .step:not(:last-child) .step-line {
+      position: absolute;
+      left: 19px;
+      top: 48px;
+      bottom: -12px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+    }
+
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1877F2, #0055d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      flex-shrink: 0;
+      color: white;
+      margin-top: 4px;
+    }
+
+    .step-body {
+      flex: 1;
+      padding-bottom: 28px;
+    }
+
+    .step-body h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .step-body p, .step-body li {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .step-body ul {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    /* ===== TABLE ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    th {
+      background: rgba(24,119,242,0.15);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px 16px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ===== TAGS ===== */
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px;
+    }
+
+    .tag-blue { background: rgba(24,119,242,0.2); color: #60a5fa; border: 1px solid rgba(24,119,242,0.3); }
+    .tag-green { background: rgba(0,230,118,0.15); color: var(--green); border: 1px solid rgba(0,230,118,0.3); }
+    .tag-yellow { background: rgba(255,214,0,0.15); color: var(--yellow); border: 1px solid rgba(255,214,0,0.3); }
+    .tag-red { background: rgba(255,61,113,0.15); color: var(--red); border: 1px solid rgba(255,61,113,0.3); }
+
+    /* ===== CALLOUT ===== */
+    .callout {
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .callout-blue { background: rgba(24,119,242,0.12); border-left: 4px solid var(--blue); }
+    .callout-green { background: rgba(0,230,118,0.1); border-left: 4px solid var(--green); }
+    .callout-yellow { background: rgba(255,214,0,0.1); border-left: 4px solid var(--yellow); }
+    .callout-red { background: rgba(255,61,113,0.1); border-left: 4px solid var(--red); }
+
+    .callout-icon { font-size: 20px; flex-shrink: 0; }
+    .callout-text { font-size: 14px; }
+    .callout-text strong { display: block; margin-bottom: 4px; }
+
+    /* ===== COPY BOX ===== */
+    .copy-box {
+      background: #0d0d16;
+      border: 1px solid #2a2a3e;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: 'Inter', monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #c9d1d9;
+      white-space: pre-line;
+      margin: 12px 0;
+    }
+
+    /* ===== GRID ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    /* ===== METRIC CARD ===== */
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .metric-card .metric-val {
+      font-size: 32px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #1877F2, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .metric-card .metric-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .metric-card .metric-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .checklist li::before {
+      content: '☐';
+      font-size: 18px;
+      color: var(--blue);
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 48px 0;
+    }
+
+    /* ===== PAGE BREAK ===== */
+    .page-break { page-break-before: always; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { background: white; color: #111; }
+      .cover { background: #1877F2; color: white; }
+      .card, .metric-card { border: 1px solid #ddd; background: #f9f9f9; }
+      .copy-box { background: #f0f0f0; color: #333; }
+      .callout-blue { background: #e8f0fe; }
+      .callout-green { background: #e6f9f0; }
+      .callout-yellow { background: #fffde7; }
+      .tag-blue { background: #e8f0fe; color: #1877F2; }
+      .tag-green { background: #e6f9f0; color: #00796b; }
+      .section-number { background: #1877F2; }
+      .metric-card .metric-val { color: #1877F2; -webkit-text-fill-color: #1877F2; }
+    }
+
+    /* ===== PRINT BUTTON ===== */
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #1877F2, #0055d4);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(24,119,242,0.4);
+      z-index: 999;
+      font-family: 'Inter', sans-serif;
+      transition: transform 0.2s;
+    }
+    .print-btn:hover { transform: translateY(-2px); }
+
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Guardar como PDF</button>
+
+<!-- ===== PORTADA ===== -->
+<div class="cover">
+  <div class="cover-badge">📱 Guía Completa 2025</div>
+  <h1>Meta Ads<br><span>para AJBrotechs</span></h1>
+  <p>Paso a paso para crear anuncios que generan ventas reales con el formato de Catálogo en Facebook e Instagram</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="num">7</div>
+      <div class="label">Pasos</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="num">100%</div>
+      <div class="label">Probado</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="num">2025</div>
+      <div class="label">Actualizado</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTENIDO ===== -->
+<div class="page">
+
+  <!-- ÍNDICE -->
+  <div class="card" style="margin-bottom:48px">
+    <h3><span class="icon">📋</span> Contenido de esta guía</h3>
+    <table>
+      <tr><td><strong>Paso 1</strong></td><td>Configurar Meta Business Suite</td><td><span class="tag tag-green">Requisito</span></td></tr>
+      <tr><td><strong>Paso 2</strong></td><td>Instalar y verificar el Píxel de Meta</td><td><span class="tag tag-green">Requisito</span></td></tr>
+      <tr><td><strong>Paso 3</strong></td><td>Crear el Catálogo de productos</td><td><span class="tag tag-blue">Clave</span></td></tr>
+      <tr><td><strong>Paso 4</strong></td><td>Crear la campaña tipo Colección</td><td><span class="tag tag-blue">Clave</span></td></tr>
+      <tr><td><strong>Paso 5</strong></td><td>Crear el creativo perfecto</td><td><span class="tag tag-yellow">Creativo</span></td></tr>
+      <tr><td><strong>Paso 6</strong></td><td>Segmentación y presupuesto</td><td><span class="tag tag-yellow">Estrategia</span></td></tr>
+      <tr><td><strong>Paso 7</strong></td><td>Medir resultados y escalar</td><td><span class="tag tag-red">Escalar</span></td></tr>
+    </table>
+  </div>
+
+  <!-- PASO 1 -->
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div>
+      <h2>Configurar Meta Business Suite</h2>
+      <div class="sub">Base obligatoria antes de crear cualquier anuncio</div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Crear tu cuenta en Business Suite</h4>
+        <p>Ve a <strong>business.facebook.com</strong> y haz clic en "Crear cuenta".</p>
+        <p>Usa el correo de tu empresa o uno dedicado a AJBrotechs.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Conecta tu Página de Facebook</h4>
+        <p>En Business Suite → <strong>Configuración del negocio → Páginas → Agregar</strong></p>
+        <p>Si no tienes una página, crea una con el nombre <em>AJBrotechs</em> con categoría "Tienda de electrónica".</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Crear cuenta publicitaria</h4>
+        <p>Configuración del negocio → <strong>Cuentas publicitarias → Agregar → Crear nueva</strong></p>
+        <p>Moneda: <strong>COP (Peso colombiano)</strong> | Zona horaria: <strong>Bogotá</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Agregar método de pago</h4>
+        <p>Administrador de anuncios → Facturación → <strong>Agregar método de pago</strong></p>
+        <p>Puedes usar tarjeta de crédito/débito Visa/Mastercard o PayPal.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-yellow">
+    <div class="callout-icon">⚠️</div>
+    <div class="callout-text">
+      <strong>Importante:</strong> Usa siempre la misma cuenta de Facebook que administra tu página. No uses una cuenta personal nueva ya que Meta puede suspenderla por actividad inusual.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 2 -->
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <h2>Instalar y Verificar el Píxel de Meta</h2>
+      <div class="sub">Ya tienes el píxel en tu web — solo debes conectarlo correctamente</div>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <div class="callout-icon">✅</div>
+    <div class="callout-text">
+      <strong>Buena noticia:</strong> Tu web AJBrotechs ya tiene el código del Píxel instalado. Solo necesitas tomar el ID correcto de Meta y pegarlo en el archivo index.html.
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Obtener tu ID del Píxel</h4>
+        <p>Administrador de eventos → <strong>Conectar fuentes de datos → Web → Píxel de Meta</strong></p>
+        <p>Copia el número de 15-16 dígitos (ej: <code>1234567890123456</code>)</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Pegar el ID en tu web</h4>
+        <p>Abre el archivo <strong>index.html</strong> de AJBrotechs y busca la línea:</p>
+        <div class="copy-box">fbq('init', 'TU_PIXEL_ID_AQUI');</div>
+        <p>Reemplaza <code>TU_PIXEL_ID_AQUI</code> por tu número real del píxel.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Verificar que funciona</h4>
+        <p>Instala la extensión <strong>"Meta Pixel Helper"</strong> en Chrome.</p>
+        <p>Abre tu web → el ícono debe ponerse verde ✅ si el píxel está activo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📊</span> Eventos que ya trackea tu web automáticamente</h3>
+    <table>
+      <thead>
+        <tr><th>Evento</th><th>Cuándo se dispara</th><th>Para qué sirve</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="tag tag-blue">ViewContent</span></td><td>Al ver la web</td><td>Saber quién visitó</td></tr>
+        <tr><td><span class="tag tag-yellow">AddToCart</span></td><td>Al agregar al carrito</td><td>Remarketing de carrito abandonado</td></tr>
+        <tr><td><span class="tag tag-yellow">InitiateCheckout</span></td><td>Al ir al pago</td><td>Medir intención de compra</td></tr>
+        <tr><td><span class="tag tag-green">Purchase</span></td><td>Al completar pago</td><td>Medir ventas reales (ROAS)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 3 -->
+  <div class="section-header page-break">
+    <div class="section-number">3</div>
+    <div>
+      <h2>Crear el Catálogo de Productos</h2>
+      <div class="sub">Esto es lo que genera los "cuadritos" de productos en el anuncio</div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Ir a Commerce Manager</h4>
+        <p>Desde Business Suite → menú lateral → <strong>Commerce Manager</strong></p>
+        <p>O directo en: <strong>business.facebook.com/commerce</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Crear nuevo catálogo</h4>
+        <p>Clic en <strong>"Agregar catálogo"</strong></p>
+        <ul>
+          <li>Tipo: <strong>E-commerce</strong></li>
+          <li>Nombre: <em>AJBrotechs Productos</em></li>
+          <li>Negocio: Selecciona tu Business Suite</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Agregar productos manualmente</h4>
+        <p>Dentro del catálogo → <strong>"Artículos" → "Agregar artículos" → "Agregar manualmente"</strong></p>
+        <p>Agrega cada producto con la siguiente información:</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📦</span> Datos por producto a completar</h3>
+    <table>
+      <thead>
+        <tr><th>Campo</th><th>Ejemplo AirPods Pro 2</th><th>Obligatorio</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nombre del artículo</td><td>AirPods Pro 2 — AJBrotechs</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Descripción</td><td>AirPods Pro 2 originales. Cancelación de ruido activa. Garantía incluida.</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Precio</td><td>350000 COP</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Precio anterior</td><td>450000 COP</td><td><span class="tag tag-yellow">Recomendado</span></td></tr>
+        <tr><td>URL del producto</td><td>https://ajbrotechs.vercel.app/?p=airpods-pro-2</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Imagen principal</td><td>Foto del producto (mínimo 500x500px)</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Disponibilidad</td><td>in stock</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Condición</td><td>new</td><td><span class="tag tag-red">Sí</span></td></tr>
+        <tr><td>Marca</td><td>Apple</td><td><span class="tag tag-yellow">Recomendado</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🔗</span> URLs para cada producto de AJBrotechs</h3>
+    <table>
+      <thead><tr><th>Producto</th><th>URL directa (copiar y pegar)</th></tr></thead>
+      <tbody>
+        <tr><td>AirPods Pro 2</td><td><code>https://ajbrotechs.vercel.app/?p=airpods-pro-2</code></td></tr>
+        <tr><td>AirPods Pro 3</td><td><code>https://ajbrotechs.vercel.app/?p=airpods-pro-3</code></td></tr>
+        <tr><td>AirPods 4ta Gen</td><td><code>https://ajbrotechs.vercel.app/?p=airpods-4ta-gen</code></td></tr>
+        <tr><td>AirPods 1a Gen Grande</td><td><code>https://ajbrotechs.vercel.app/?p=airpods-1gen-grande</code></td></tr>
+        <tr><td>AirPods 1a Gen Pequeño</td><td><code>https://ajbrotechs.vercel.app/?p=airpods-1gen-pequeño</code></td></tr>
+        <tr><td>Cargador Lightning</td><td><code>https://ajbrotechs.vercel.app/?p=cargador-lightning</code></td></tr>
+        <tr><td>Cargador Tipo C</td><td><code>https://ajbrotechs.vercel.app/?p=cargador-tipo-c</code></td></tr>
+        <tr><td>Vidrio Blindado</td><td><code>https://ajbrotechs.vercel.app/?p=vidrio-blindado</code></td></tr>
+        <tr><td>Vidrio Antiespía</td><td><code>https://ajbrotechs.vercel.app/?p=vidrio-antiespía</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-blue">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text">
+      <strong>Pro Tip:</strong> Al hacer clic en cualquier cuadrito del anuncio, la persona llega directo a ese producto con un efecto de brillo que lo resalta. Ya está programado en tu web.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 4 -->
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div>
+      <h2>Crear la Campaña en Meta Ads</h2>
+      <div class="sub">El formato "Colección" genera exactamente los cuadritos que viste</div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Ir al Administrador de Anuncios</h4>
+        <p>Ve a <strong>adsmanager.facebook.com</strong> → clic en <strong>"+ Crear"</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Seleccionar objetivo</h4>
+        <p>Para catálogo con cuadritos: elige <strong>"Ventas"</strong></p>
+        <p>Activa la casilla <strong>"Ventas de catálogo"</strong> y selecciona tu catálogo <em>AJBrotechs Productos</em></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Nivel de conjunto de anuncios</h4>
+        <p>Audiencia → <strong>"Personas que no han interactuado con tu catálogo"</strong> (audiencia fría para empezar)</p>
+        <p>Ubicaciones → Selecciona <strong>Feed de Facebook, Instagram Feed y Stories</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Nivel de anuncio — Elegir formato</h4>
+        <p>En "Formato del anuncio" selecciona: <strong>Colección</strong></p>
+        <p>Esto es lo que muestra: imagen/video grande arriba + cuadritos de productos abajo</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <h4>Configurar la Colección</h4>
+        <ul>
+          <li><strong>Imagen/Video principal:</strong> Sube tu mejor foto o video de producto</li>
+          <li><strong>Catálogo de productos:</strong> Selecciona <em>AJBrotechs Productos</em></li>
+          <li><strong>Productos a mostrar:</strong> "Los más vendidos" o selecciona manualmente</li>
+          <li><strong>Experiencia instantánea:</strong> Actívala para mayor engagement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <div class="callout-icon">🎯</div>
+    <div class="callout-text">
+      <strong>Experiencia Instantánea:</strong> Es una mini-tienda que se abre dentro de Facebook/Instagram al hacer clic, mostrando todos tus productos a pantalla completa antes de ir a tu web. Aumenta las conversiones hasta un 40%.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 5 -->
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div>
+      <h2>Crear el Creativo Perfecto</h2>
+      <div class="sub">El contenido visual es el 80% del éxito de un anuncio</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3><span class="icon">🖼️</span> Imagen estática</h3>
+      <ul style="padding-left:16px; font-size:14px; color:var(--muted)">
+        <li>Tamaño: <strong>1080x1080px</strong> (cuadrado)</li>
+        <li>Texto en imagen: máximo 20%</li>
+        <li>Muestra el producto sobre fondo limpio</li>
+        <li>Incluye precio destacado</li>
+        <li>Formato: JPG o PNG</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="icon">🎬</span> Video (mejor rendimiento)</h3>
+      <ul style="padding-left:16px; font-size:14px; color:var(--muted)">
+        <li>Duración ideal: <strong>7 a 15 segundos</strong></li>
+        <li>Formato vertical: <strong>9:16</strong> para Reels/Stories</li>
+        <li>Primeros 3 seg: lo más impactante</li>
+        <li>Subtítulos siempre (80% sin sonido)</li>
+        <li>Termina con precio + CTA</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">✍️</span> Fórmula del Copy Perfecto</h3>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:12px">Usa esta estructura probada para el texto del anuncio:</p>
+    <div class="copy-box">❌ [DOLOR] ¿Cansado de los AirPods que se quedan sin batería al rato?
+
+✅ [SOLUCIÓN] Los AirPods Pro 2 originales llegan hasta 30 horas con el estuche.
+
+🔥 [OFERTA] Solo esta semana: $350.000
+✅ Envío a todo Colombia
+✅ Garantía incluida
+✅ Pago con Mercado Pago o efectivo
+
+👆 Toca "Comprar ahora" y recíbelo en tu puerta</div>
+    <p style="font-size:12px; color:var(--muted); margin-top:8px">* Adapta el dolor y la solución a cada producto específico</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">💬</span> Ejemplos de copy por producto</h3>
+    <table>
+      <thead><tr><th>Producto</th><th>Dolor (primera línea del anuncio)</th></tr></thead>
+      <tbody>
+        <tr><td>AirPods Pro 2</td><td>"¿Cansado del ruido en el bus o en la calle?"</td></tr>
+        <tr><td>Vidrio Blindado</td><td>"¿Ya se te cayó el iPhone y rajaste la pantalla?"</td></tr>
+        <tr><td>Vidrio Antiespía</td><td>"¿El de al lado siempre está mirando tu pantalla?"</td></tr>
+        <tr><td>Cargador Tipo C</td><td>"¿Tu cargador murió a los 2 meses? Pasa factura."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 6 -->
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <div>
+      <h2>Segmentación y Presupuesto</h2>
+      <div class="sub">A quién mostrarle y cuánto gastar</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🎯</span> Segmentación recomendada para Colombia</h3>
+    <table>
+      <thead><tr><th>Variable</th><th>Configuración para AJBrotechs</th></tr></thead>
+      <tbody>
+        <tr><td>País</td><td>Colombia 🇨🇴</td></tr>
+        <tr><td>Ciudades clave</td><td>Bogotá, Medellín, Cali, Barranquilla, Bucaramanga</td></tr>
+        <tr><td>Edad</td><td>18 – 34 años</td></tr>
+        <tr><td>Género</td><td>Todos (prueba ambos por separado)</td></tr>
+        <tr><td>Intereses</td><td>Apple, iPhone, AirPods, Tecnología, Gadgets, Música</td></tr>
+        <tr><td>Comportamientos</td><td>"Compradores online activos", "Usuarios de iPhone"</td></tr>
+        <tr><td>Dispositivos</td><td>Solo móvil (la mayoría usa cel)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">💰</span> Plan de presupuesto por fases</h3>
+    <table>
+      <thead><tr><th>Fase</th><th>Presupuesto/día</th><th>Duración</th><th>Objetivo</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-blue">Fase 1 — Test</span></td>
+          <td>$10.000 – $20.000 COP</td>
+          <td>7 días</td>
+          <td>Encontrar qué creativo funciona mejor</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-yellow">Fase 2 — Optimizar</span></td>
+          <td>$30.000 – $50.000 COP</td>
+          <td>14 días</td>
+          <td>Apagar lo que no funciona, escalar lo que sí</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-green">Fase 3 — Escalar</span></td>
+          <td>$100.000+ COP</td>
+          <td>Continuo</td>
+          <td>Máximas ventas con ROAS positivo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-blue">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text">
+      <strong>Advantage+ Audience:</strong> Si activas esta opción, Meta usa su IA para encontrar automáticamente a las personas con más probabilidad de comprar. Es ideal cuando aún no tienes datos del píxel. Recomendado para empezar.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PASO 7 -->
+  <div class="section-header">
+    <div class="section-number">7</div>
+    <div>
+      <h2>Medir Resultados y Escalar</h2>
+      <div class="sub">Las métricas clave que debes revisar todos los días</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="metric-card">
+      <div class="metric-val">> 1.5%</div>
+      <div class="metric-label">CTR (Tasa de clic)</div>
+      <div class="metric-desc">Si es menor, el creativo no engancha. Cambia la imagen o el texto.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">&lt; $500</div>
+      <div class="metric-label">CPC (Costo por clic)</div>
+      <div class="metric-desc">En pesos colombianos. Si es más alto, ajusta la segmentación.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">> 2x</div>
+      <div class="metric-label">ROAS (Retorno)</div>
+      <div class="metric-desc">Por cada $1 gastado en ads, debes ganar al menos $2 en ventas.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h3><span class="icon">📈</span> Remarketing (el truco más poderoso)</h3>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:12px">Después de 7 días con el píxel activo, crea estas audiencias personalizadas:</p>
+    <table>
+      <thead><tr><th>Audiencia</th><th>Cómo crearla</th><th>Qué mostrarle</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Visitantes de la web</strong></td>
+          <td>Público personalizado → Sitio web → Últimos 30 días</td>
+          <td>Recordatorio del producto que vio</td>
+        </tr>
+        <tr>
+          <td><strong>Carritos abandonados</strong></td>
+          <td>Evento AddToCart → sin Purchase (últimos 14 días)</td>
+          <td>Descuento especial para cerrar la venta</td>
+        </tr>
+        <tr>
+          <td><strong>Compradores anteriores</strong></td>
+          <td>Evento Purchase → últimos 90 días</td>
+          <td>Productos complementarios (upsell)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout callout-green" style="margin-top:12px">
+      <div class="callout-icon">🔥</div>
+      <div class="callout-text">
+        Las audiencias de remarketing convierten entre 3x y 8x mejor que audiencias frías. Son mucho más baratas y efectivas.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHECKLIST FINAL -->
+  <div class="section-header">
+    <div class="section-number">✓</div>
+    <div>
+      <h2>Checklist antes de publicar</h2>
+      <div class="sub">Marca todo antes de activar el anuncio</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <ul class="checklist">
+      <li>Píxel de Meta instalado y verificado en la web</li>
+      <li>Catálogo creado con todos los productos y precios</li>
+      <li>URLs de productos correctas (con el parámetro ?p=)</li>
+      <li>Imágenes de productos de alta calidad (mínimo 500x500px)</li>
+      <li>Método de pago agregado en la cuenta de anuncios</li>
+      <li>Texto del anuncio revisado (sin errores de ortografía)</li>
+      <li>Precio real y precio anterior correctos en el catálogo</li>
+      <li>Ubicaciones seleccionadas: Feed Facebook + Instagram + Stories</li>
+      <li>Presupuesto diario configurado</li>
+      <li>Página de Facebook vinculada al Business Suite</li>
+      <li>Botón de llamada a la acción: "Comprar ahora"</li>
+      <li>Audencia configurada (Colombia, 18-34, intereses Apple)</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; padding: 40px 0 20px; color:var(--muted); font-size:13px">
+    <p>📱 <strong>AJBrotechs</strong> — Guía Meta Ads 2025</p>
+    <p style="margin-top:6px">Creado con ❤️ para que vendas más desde el primer día</p>
+  </div>
+
+</div>
+
+</body>
+</html>

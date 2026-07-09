@@ -88,7 +88,7 @@ function renderProducts() {
     /* --- End Carousel --- */
 
     html += '<div class="product-info">';
-    html += '<div class="product-name">' + p.nameEs + '</div>';
+    html += '<a href="producto.html?id=' + p.id + '" class="product-name" style="text-decoration:none;color:inherit;cursor:pointer">' + p.nameEs + '</a>';
     html += '<div class="product-stars">';
     html += '<span style="color:#ffd700">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ';
     html += '<span>' + p.stars + ' (' + p.reviews + ' reseñas)</span>';
@@ -99,6 +99,7 @@ function renderProducts() {
     html += '<span class="product-discount">-30%</span>';
     html += '</div>';
     html += '<button class="add-to-cart" data-id="' + p.id + '">Agregar al Carrito</button>';
+    html += '<a href="producto.html?id=' + p.id + '" class="product-detail-link">Ver detalle &rarr;</a>';
     html += '</div></div>';
   }
   grid.innerHTML = html;
